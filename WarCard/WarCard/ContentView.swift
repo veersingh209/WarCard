@@ -47,6 +47,13 @@ struct ContentView: View {
                     playerCard = "card" + String(playerRandomNumber)
                     cpuCard = "card" + String(cpuRandomNumber)
                     
+                    if playerRandomNumber > cpuRandomNumber {
+                        playerScore += 1
+                    }
+                    else if cpuRandomNumber > playerRandomNumber {
+                        cpuScore += 1
+                    }
+                    
                 } label: {
                     Image("dealbutton")
                 }
