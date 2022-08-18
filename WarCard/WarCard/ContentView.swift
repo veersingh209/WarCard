@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var playerCard = "card2"
+    @State private var playerScore = 0
+    
+    @State private var cpuCard = "card3"
+    @State private var cpuScore = 0
+    
     var body: some View {
         
         ZStack {
@@ -15,44 +22,67 @@ struct ContentView: View {
                 .ignoresSafeArea(.all)
             
             VStack {
+                
                 Spacer()
+                
                 Image("logo")
+                
                 Spacer()
+                
                 HStack {
                     Spacer()
-                    Image("card2")
+                    Image(playerCard)
                     Spacer()
-                    Image("card3")
+                    Image(cpuCard)
                     Spacer()
                 }
                 .padding()
+                
                 Spacer()
-                Image("dealbutton")
+                
+                Button {
+                    let playerRandomNumber = Int.random(in: 2...14)
+                    let cpuRandomNumber = Int.random(in: 2...14)
+                    
+                    playerCard = "card" + String(playerRandomNumber)
+                    cpuCard = "card" + String(cpuRandomNumber)
+                    
+                } label: {
+                    Image("dealbutton")
+                }
+
                 Spacer()
+                
                 HStack {
                     Spacer()
+                    
                     VStack {
                         Text("Player")
                             .font(.headline)
                             .foregroundColor(Color.white)
                             .padding(.bottom, 10.0)
-                        Text("0")
+                        Text(String(playerScore))
                             .font(.largeTitle)
                             .foregroundColor(Color.white)
                     }
+                    
                     Spacer()
+                    
                     VStack {
                         Text("CPU")
                             .font(.headline)
                             .foregroundColor(Color.white)
                             .padding(.bottom, 10.0)
-                        Text("0")
+                        Text(String(cpuScore))
                             .font(.largeTitle)
                             .foregroundColor(Color.white)
                     }
+                    
                     Spacer()
+                    
                 }
                 .padding()
+                
                 Spacer()
                 
             }
